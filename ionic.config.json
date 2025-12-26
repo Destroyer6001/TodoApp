@@ -1,0 +1,7 @@
+{
+  "name": "ToDoFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
