@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-center">
+    <form [formGroup]="taskForm" (ngSubmit)="saveChanges()" class="form-container">
+      <div class="formInput">
+        <ion-input
+          label="Nombre"
+          label-placement="floating"
+          fill="outline"
+          placeholder="Nombre de la tarea"
+          formControlName="name">
+        </ion-input>
+      </div>
+      <div class="formInput">
+        <ion-select
+          label-placement="floating"
+          label="Categoria"
+          fill="outline"
+          placeholder="Seleccione la categoria"
+          formControlName="categoryId">
+          @for (c of categoryList; track c.id)
+          {
+            <ion-select-option [value]="c.id">{{c.name}}</ion-select-option>
+          }
+        </ion-select>
+      </div>
+      <div class="formInput">
+        <ion-textarea
+          label="Descripcion"
+          label-placement="floating"
+          fill="outline"
+          placeholder="Descripcion de la tarea"
+          formControlName="description">
+        </ion-textarea>
+      </div>
+      <div class="actions">
+        <ion-button fill="clear" (click)="goBack()">
+          Regresar
+        </ion-button>
+        <ion-button
+          type="submit"
+          color="primary"
+          [disabled]="taskForm.invalid">
+          Guardar
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,26 @@
+.page-center {
+  min-height: 100%;
+  display: flex;
+  justify-content: center; /* vertical */
+  align-items: center;     /* horizontal */
+  padding: 16px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 520px;
+  padding: 32px;
+
+  background: var(--ion-color-light);
+  border-radius: 16px;
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}

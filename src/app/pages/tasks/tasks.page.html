@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-select
+      label="Categorias"
+      label-placement="floating"
+      fill="outline"
+      interface="popover"
+      (ionChange)="onFilterChange($event)">
+      <ion-select-option value="0">Todas las categorias</ion-select-option>
+      @for (c of categoryList; track c.id) {
+        <ion-select-option value="{{c.id}}">{{c.name}}</ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+  <ion-list>
+    @for (t of taskListAux; track t.id)
+    {
+      <ion-item>
+        <ion-label>
+          <h2>{{t.name}}</h2>
+          <p>{{t.description}}</p>
+          <p>{{t.categoryName}}</p>
+          <p>{{t.state ? 'Terminada' : 'Pendiente'}}</p>
+        </ion-label>
+        <ion-button slot="end" fill="clear" (click)="redirectPage(t.id)">
+          <ion-icon name="create" color="warning"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear" (click)="confirmDeleteTask(t.id)">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear" (click)="changeStatus(t.id)">
+          <ion-icon name="swap-horizontal-outline" color="medium"></ion-icon>
+        </ion-button>
+      </ion-item>
+    }
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="redirectPage(0)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

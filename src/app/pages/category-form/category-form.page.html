@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="page-center">
+    <form
+      [formGroup]="categoryForm"
+      (ngSubmit)="saveChanges()"
+      class="form-container">
+
+      <ion-input
+        label="Nombre"
+        label-placement="floating"
+        fill="outline"
+        formControlName="name">
+      </ion-input>
+
+      <div class="actions">
+        <ion-button fill="clear" (click)="goBack()">
+          Regresar
+        </ion-button>
+
+        <ion-button
+          type="submit"
+          color="primary"
+          [disabled]="categoryForm.invalid">
+          Guardar
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
